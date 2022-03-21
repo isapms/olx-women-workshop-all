@@ -1,0 +1,26 @@
+version: "3.2"
+services:
+  frontend:
+    image: aipms/olx-women-workshop-2022-frontend:v1
+    ports:
+      - 3000:3000
+    container_name: mini-olx-frontend
+  backend:
+    image: aipms/olx-women-workshop-2022-backend:v1
+    ports:
+      - 4040:4040
+    container_name: mini-olx-backend
+  database:
+    image: mysql:5.7.22
+    environment:
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    container_name: mini-olx-backend-db
+    ports:
+      - 33061:3306
+    volumes:
+      - "./scripts/schema.sql:/docker-entrypoint-initdb.d/1.sql"
+      - mini-olx-backend-data:/var/lib/mysql
+volumes:
+  mini-olx-backend-data:
+
