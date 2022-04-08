@@ -6,7 +6,7 @@ services:
       - 3000:3000
     container_name: mini-olx-frontend
   backend:
-    image: aipms/olx-women-workshop-2022-backend:v1
+    image: aipms/olx-women-workshop-2022-backend:latest
     ports:
       - 4040:4040
     container_name: mini-olx-backend
